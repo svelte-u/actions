@@ -56,5 +56,8 @@
     },
     "publishConfig": {
         "access": "public"
+    },
+    "dependencies": {
+        "@sveu/shared": "^0.7.0"
     }
 }
