@@ -2,6 +2,15 @@ import { on } from "@sveu/browser"
 
 import type { DropzoneData } from "../utils"
 
+/**
+ * Create a dropzone area.
+ *
+ * @param element - The element to make as dropzone.
+ *
+ * @param fn - A function to be called when the dropzone is hovered or files are dropped.
+ * - `over_dropzone` - Whether the dropzone is hovered. Type: `boolean`.
+ * - `files` - The files dropped. Type: `File[]` or `undefined`.
+ */
 export function dropzone(
 	element: HTMLElement,
 	fn?: (data: DropzoneData) => void
