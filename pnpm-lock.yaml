@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@sveu/browser': ^0.8.0
-  '@sveu/shared': ^0.8.0
   '@trivago/prettier-plugin-sort-imports': ^4.0.0
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.13.0
@@ -23,7 +22,6 @@ specifiers:
 
 dependencies:
   '@sveu/browser': 0.8.0
-  '@sveu/shared': 0.8.0
 
 devDependencies:
   '@trivago/prettier-plugin-sort-imports': 4.0.0_prettier@2.8.4

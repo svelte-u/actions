@@ -58,7 +58,6 @@
         "access": "public"
     },
     "dependencies": {
-        "@sveu/browser": "^0.8.0",
-        "@sveu/shared": "^0.8.0"
+        "@sveu/browser": "^0.8.0"
     }
 }
