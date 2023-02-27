@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@sveu/browser': ^0.8.0
   '@sveu/shared': ^0.8.0
   '@trivago/prettier-plugin-sort-imports': ^4.0.0
   '@types/fs-extra': ^11.0.1
@@ -21,6 +22,7 @@ specifiers:
   vitest: ^0.28.5
 
 dependencies:
+  '@sveu/browser': 0.8.0
   '@sveu/shared': 0.8.0
 
 devDependencies:
@@ -824,6 +826,12 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@sveu/browser/0.8.0:
+    resolution: {integrity: sha512-XPFtdLj3yYLZZ6O7xvAOR2+NKBw/b2fW4B3lLkr84AkUMQsKnqSgO6Nc6ast20v58fiKQUqN4W7xMDUE6xSV+A==}
+    dependencies:
+      '@sveu/shared': 0.8.0
+    dev: false
 
   /@sveu/shared/0.8.0:
     resolution: {integrity: sha512-tVnqqX8gmkHSB8FfS4FNLIpqT7hKICkv6miJ2Lfm4XhqYTCxiExkkD6Baae4nk7q7eOs2pXhYXlSm9mCgaCgnA==}
