@@ -17,7 +17,7 @@ export function dropzone(
 ) {
 	let counter = 0
 
-	on<DragEvent>(element, "dragenter", (event) => {
+	const dragenter_cleanup = on<DragEvent>(element, "dragenter", (event) => {
 		event.preventDefault()
 
 		counter += 1
@@ -27,11 +27,11 @@ export function dropzone(
 		element.dispatchEvent(new CustomEvent("hover", { detail: true }))
 	})
 
-	on<DragEvent>(element, "dragover", (event) => {
+	const dragover_cleanup = on<DragEvent>(element, "dragover", (event) => {
 		event.preventDefault()
 	})
 
-	on<DragEvent>(element, "dragleave", (event) => {
+	const dragleave_cleanup = on<DragEvent>(element, "dragleave", (event) => {
 		event.preventDefault()
 
 		counter -= 1
@@ -43,7 +43,7 @@ export function dropzone(
 		}
 	})
 
-	on<DragEvent>(element, "drop", (event) => {
+	const drop_cleanup = on<DragEvent>(element, "drop", (event) => {
 		event.preventDefault()
 
 		counter = 0
@@ -56,4 +56,13 @@ export function dropzone(
 
 		element.dispatchEvent(new CustomEvent("files", { detail: files }))
 	})
+
+	return {
+		destroy() {
+			dragenter_cleanup()
+			dragover_cleanup()
+			dragleave_cleanup()
+			drop_cleanup()
+		},
+	}
 }
