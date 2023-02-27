@@ -1,8 +1,9 @@
 {
-    "total": 2,
+    "total": 3,
     "packages": {
         "index": [
             "dropzone",
+            "el_bound",
             "utils"
         ]
     }
