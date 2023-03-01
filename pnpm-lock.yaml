@@ -1,7 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@sveu/browser': ^0.9.0
+  '@sveu/browser': ^0.12.0
+  '@sveu/shared': ^0.8.0
   '@trivago/prettier-plugin-sort-imports': ^4.0.0
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.13.0
@@ -21,7 +22,8 @@ specifiers:
   vitest: ^0.28.5
 
 dependencies:
-  '@sveu/browser': 0.9.0
+  '@sveu/browser': 0.12.0
+  '@sveu/shared': 0.8.0
 
 devDependencies:
   '@trivago/prettier-plugin-sort-imports': 4.0.0_prettier@2.8.4
@@ -825,8 +827,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@sveu/browser/0.9.0:
-    resolution: {integrity: sha512-M2xHto98P/43gIpXD5d8HQH0NuaO7sjksqq0aAgMq+pZTxFYa0Ax7PeD0X4nnoDOIFMzju/pUKF+LtXaehjfMA==}
+  /@sveu/browser/0.12.0:
+    resolution: {integrity: sha512-0LkxfLpr6gaop98YmMPheaWzJWFjJg40JtPntfppch6pF4KgsCg7ja1dT0T0hc01Apj5f/vZZ83Z4xVsZJSsYQ==}
     dependencies:
       '@sveu/shared': 0.8.0
     dev: false
