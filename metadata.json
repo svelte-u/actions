@@ -1,9 +1,10 @@
 {
-    "total": 3,
+    "total": 4,
     "packages": {
         "index": [
             "dropzone",
             "el_bound",
+            "fullscreen",
             "utils"
         ]
     }

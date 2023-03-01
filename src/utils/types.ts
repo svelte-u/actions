@@ -28,3 +28,22 @@ export interface ElementBoundData {
 	/** The y position of the element. */
 	y: number
 }
+
+export type FullscreenFnData = {
+	supported: boolean
+
+	enter: () => Promise<void>
+
+	exit: () => Promise<void>
+
+	toggle: () => Promise<void>
+}
+
+export type FullscreenFunctionMap = [
+	"requestFullscreen",
+	"exitFullscreen",
+	"fullscreenElement",
+	"fullscreenEnabled",
+	"fullscreenchange",
+	"fullscreenerror"
+]
