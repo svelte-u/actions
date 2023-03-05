@@ -327,4 +327,5 @@ $RECYCLE.BIN/
 *.lock
 package-lock.json
 /*.d.ts
+!events.d.ts
 /*.js

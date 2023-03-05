@@ -29,9 +29,8 @@ export function group(
 		const id = fn(item)
 		const groupList = acc[id] ?? []
 		return { ...acc, [id]: [...groupList, item] }
-	}, {}) satisfies Record<string, any>
+	}, {}) as Record<string, any>
 }
-
 
 /**
  *
@@ -57,7 +56,7 @@ async function get_submodules(dir: string, files: string[]) {
 			}
 		}
 	}
-	return submodules satisfies ListFunctions[]
+	return submodules as ListFunctions[]
 }
 
 /**
@@ -113,7 +112,7 @@ export async function update_package_json(exports: Record<string, any>) {
 export async function clear() {
 	const files = await fg(["*.js", "*.d.ts"], {
 		cwd: DIR_ROOT,
-		ignore: ["_*", "dist", "node_modules"],
+		ignore: ["_*", "dist", "node_modules", "events.d.ts"],
 	})
 
 	for (const file of files) {
