@@ -112,7 +112,7 @@ export async function update_package_json(exports: Record<string, any>) {
 export async function clear() {
 	const files = await fg(["*.js", "*.d.ts"], {
 		cwd: DIR_ROOT,
-		ignore: ["_*", "dist", "node_modules"],
+		ignore: ["_*", "dist", "node_modules", "events.d.ts"],
 	})
 
 	for (const file of files) {

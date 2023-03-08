@@ -11,6 +11,7 @@ async function run() {
 	const pkg_exports: Record<string, any> = {
 		".": {
 			import: "./index.js",
+			types: "./index.d.ts",
 		},
 	}
 

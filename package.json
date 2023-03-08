@@ -32,7 +32,8 @@
     },
     "exports": {
         ".": {
-            "import": "./index.js"
+            "import": "./index.js",
+            "types": "./index.d.ts"
         }
     },
     "devDependencies": {
