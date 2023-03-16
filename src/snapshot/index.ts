@@ -1,4 +1,4 @@
-import { storage } from "@sveu/browser"
+import { on, storage } from "@sveu/browser"
 import { noop, unstore } from "@sveu/shared"
 
 import type { SnapshotOptions } from "../utils"
@@ -32,11 +32,18 @@ export function snapshot<T extends HTMLElement | Window>(
 
 	restore(unstore(state))
 
+	function _capture() {
+		if (capture) {
+			state.set(capture(node))
+		}
+	}
+
+	const cleanup = on(window, "beforeunload", _capture)
+
 	return {
-		update() {
-			if (capture) {
-				state.set(capture(node))
-			}
+		destroy() {
+			_capture()
+			cleanup()
 		},
 	}
 }
