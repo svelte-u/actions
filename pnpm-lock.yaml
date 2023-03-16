@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@sveu/browser': ^0.12.0
-  '@sveu/shared': ^0.8.2
+  '@sveu/browser': ^0.18.0
+  '@sveu/shared': ^0.9.0
   '@trivago/prettier-plugin-sort-imports': ^4.0.0
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.13.0
@@ -22,8 +22,8 @@ specifiers:
   vitest: ^0.28.5
 
 dependencies:
-  '@sveu/browser': 0.12.0
-  '@sveu/shared': 0.8.2
+  '@sveu/browser': 0.18.0
+  '@sveu/shared': 0.9.0
 
 devDependencies:
   '@trivago/prettier-plugin-sort-imports': 4.0.0_prettier@2.8.4
@@ -827,14 +827,14 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@sveu/browser/0.12.0:
-    resolution: {integrity: sha512-0LkxfLpr6gaop98YmMPheaWzJWFjJg40JtPntfppch6pF4KgsCg7ja1dT0T0hc01Apj5f/vZZ83Z4xVsZJSsYQ==}
+  /@sveu/browser/0.18.0:
+    resolution: {integrity: sha512-7h3udbvQMiI4Mcco9R+R4HxGEc6cZHF/9yQkibHc4QgMZE/L8vg7mRcR++1utXkTUYljb4H2U1p04mKegP3JAw==}
     dependencies:
-      '@sveu/shared': 0.8.2
+      '@sveu/shared': 0.9.0
     dev: false
 
-  /@sveu/shared/0.8.2:
-    resolution: {integrity: sha512-Hx9SGP84B0wloKV8uUBYHsQ+iRZaJxQEdxNcqIhHszbhCIcZa2opmBDSuWPTcJ7/kkxglAnk+l+wKwqGXPC4yQ==}
+  /@sveu/shared/0.9.0:
+    resolution: {integrity: sha512-ct7myvdkP1B5GxFfAsnr9KxEUn8BWT006Y8QDTPmcxNpZGdFM+hYO6rGI1ATVglLMzaUEvDpWveFtBSXnm5u7w==}
     dev: false
 
   /@trivago/prettier-plugin-sort-imports/4.0.0_prettier@2.8.4:
