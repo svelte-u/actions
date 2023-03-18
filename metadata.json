@@ -1,11 +1,12 @@
 {
-    "total": 5,
+    "total": 6,
     "packages": {
         "index": [
             "dropzone",
             "el_bound",
             "fullscreen",
             "snapshot",
+            "start_typing",
             "utils"
         ]
     }
