@@ -3,12 +3,12 @@ import { on } from "@sveu/browser"
 import type { DropzoneData } from "../utils"
 
 /**
- * Create a dropzone area.
+ * Create a dropzone area for files.
  *
  * @param element - The element to make as dropzone.
  *
  * @param fn - A function to be called when the dropzone is hovered or files are dropped.
- * - `over_dropzone` - Whether the dropzone is hovered. Type: `boolean`.
+ * - `overDropzone` - Whether the dropzone is hovered. Type: `boolean`.
  * - `files` - The files dropped. Type: `File[]` or `undefined`.
  */
 export function dropzone(
@@ -22,7 +22,7 @@ export function dropzone(
 
 		counter += 1
 
-		if (fn) fn({ over_dropzone: true })
+		if (fn) fn({ overDropzone: true })
 
 		element.dispatchEvent(new CustomEvent("hover", { detail: true }))
 	})
@@ -37,7 +37,7 @@ export function dropzone(
 		counter -= 1
 
 		if (counter === 0) {
-			if (fn) fn({ over_dropzone: false })
+			if (fn) fn({ overDropzone: false })
 
 			element.dispatchEvent(new CustomEvent("hover", { detail: false }))
 		}
@@ -50,7 +50,7 @@ export function dropzone(
 
 		const files = Array.from(event.dataTransfer?.files ?? [])
 
-		if (fn) fn({ over_dropzone: false, files: files })
+		if (fn) fn({ overDropzone: false, files })
 
 		element.dispatchEvent(new CustomEvent("hover", { detail: false }))
 

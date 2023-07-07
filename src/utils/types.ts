@@ -1,5 +1,5 @@
 export type DropzoneData = {
-	over_dropzone: boolean
+	overDropzone: boolean
 	files?: File[]
 }
 

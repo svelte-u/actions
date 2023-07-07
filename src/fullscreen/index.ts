@@ -59,6 +59,16 @@ const functions_map: FullscreenFunctionMap[] = [
  * - `exit` - The function to call to exit fullscreen.
  * - `toggle` - The function to call to toggle fullscreen.
  *
+ * @example
+ * ```html
+ * <script>
+ * function fn({ supported, enter, exit, toggle }) {
+ * // Do something with the data
+ * }
+ * </script>
+ *
+ * <video src="https://vjs.zencdn.net/v/oceans.mp4" use:fullscreen={fn}  on:fullscreen="{(e) => console.log(e.detail)}"/>
+ * ```
  */
 export function fullscreen(
 	element: HTMLElement | SVGElement,

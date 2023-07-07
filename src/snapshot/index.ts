@@ -8,6 +8,26 @@ import type { SnapshotOptions } from "../utils"
  *
  * @param node - The node to take a snapshot of.
  *
+ * @example
+ * ```html
+ *
+ * <script>
+ *  function capture(node) {
+ *    return 'hello' // return the value to store
+ *  }
+ *
+ *  function restore(value) {
+ *    // do something with the value
+ *  }
+ *
+ *  </script>
+ *
+ * <form use:snapshot="{{ capture, restore }}">
+ *  <input type="text" name="name" />
+ * <button type="submit">Submit</button>
+ * </form>
+ * ```
+ *
  * @param options - The options to use.
  * - `key` - The key to use storing the snapshot data.
  * - `store` - The storage to use for storing the snapshot data. Defaults to "local".

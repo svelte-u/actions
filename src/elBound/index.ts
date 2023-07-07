@@ -1,4 +1,4 @@
-import { on, resize_observer } from "@sveu/browser"
+import { on, resizeObserver } from "@sveu/browser"
 
 import type { ElementBoundData } from "../utils"
 
@@ -8,8 +8,29 @@ import type { ElementBoundData } from "../utils"
  * @param element - HTML element
  *
  * @param fn - Callback function
+ * - `data.height` - Height of the element
+ * - `data.width` - Width of the element
+ * - `data.bottom` - Bottom position of the element
+ * - `data.left` - Left position of the element
+ * - `data.right` - Right position of the element
+ * - `data.top` - Top position of the element
+ * - `data.x` - X position of the element
+ * - `data.y` - Y position of the element
+ *
+ * @example
+ * ```html
+ * <script>
+ * function fn(data) {
+ * 	console.log(data)
+ * // Do something with the data
+ * }
+ * </script>
+ *
+ * <div use:elBound={fn} />
+ * ```
+ *
  */
-export function el_bound(
+export function elBound(
 	element: HTMLElement | SVGElement,
 	fn: (data: ElementBoundData) => void
 ) {
@@ -52,7 +73,7 @@ export function el_bound(
 
 	const scroll_cleanup = on(window, "scroll", update)
 
-	const { cleanup: observer_cleanup } = resize_observer(element, update)
+	const { cleanup: observer_cleanup } = resizeObserver(element, update)
 
 	return {
 		destroy() {

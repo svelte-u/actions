@@ -42,8 +42,19 @@ function is_valid_char({ keyCode, metaKey, ctrlKey, altKey }: KeyboardEvent) {
  *
  * @param fn - A function to be called when the user types a valid character.
  *
+ * @example
+ * ```html
+ * <script>
+ * function fn(element, event) {
+ * 	 if(element !== document.activeElement) element.focus()
+ * }
+ * </script>
+ *
+ * <input use:startTyping={fn} />
+ * ```
+ *
  */
-export function start_typing<T extends HTMLElement>(
+export function startTyping<T extends HTMLElement>(
 	element: T,
 	fn: (element: T, event: KeyboardEvent) => void
 ) {
