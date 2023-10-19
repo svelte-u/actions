@@ -1,9 +1,9 @@
-export type DropzoneData = {
+export type DropzoneParameter = {
 	overDropzone: boolean
 	files?: File[]
 }
 
-export interface ElementBoundData {
+export interface ElementBoundParameter {
 	/** The height of the element. */
 	height: number
 
@@ -29,7 +29,7 @@ export interface ElementBoundData {
 	y: number
 }
 
-export type FullscreenFnData = {
+export type FullscreenParameter = {
 	supported: boolean
 
 	enter: () => Promise<void>
@@ -45,7 +45,7 @@ export type FullscreenFunctionMap = [
 	"fullscreenElement",
 	"fullscreenEnabled",
 	"fullscreenchange",
-	"fullscreenerror"
+	"fullscreenerror",
 ]
 
 export interface SnapshotOptions<T = unknown> {
@@ -82,5 +82,14 @@ export interface SnapshotOptions<T = unknown> {
 	 * @param state - The state to restore.
 	 *
 	 */
-	restore?: (state: any) => void
+	restore?: (state: unknown) => void
+}
+
+export interface DropzoneAttributes {
+	"on:hover"?: (event: CustomEvent<boolean>) => void
+	"on:files"?: (event: CustomEvent<File[]>) => void
+}
+
+export interface FullscreenAttributes {
+	"on:fullscreen"?: (event: CustomEvent<boolean>) => void
 }

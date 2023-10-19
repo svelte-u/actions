@@ -1,8 +1,9 @@
-import fg from "fast-glob"
-import fs from "fs-extra"
 import { readdir } from "fs/promises"
 import path from "path"
 import { fileURLToPath as file_url_to_path } from "url"
+
+import fg from "fast-glob"
+import fs from "fs-extra"
 
 const current_path = path.dirname(file_url_to_path(import.meta.url))
 
@@ -21,15 +22,15 @@ interface ListFunctions {
  * @param fn - the function to group by.
  * @returns The grouped item.
  */
-export function group(
-	list: Record<string, any>[],
-	fn: (item: Record<string, any>) => any
-) {
-	return list.reduce((acc, item) => {
-		const id = fn(item)
-		const groupList = acc[id] ?? []
-		return { ...acc, [id]: [...groupList, item] }
-	}, {}) as Record<string, any>
+export function group<T, K extends string | number | symbol>(list: T[], fn: (item: T) => K) {
+	return list.reduce(
+		(acc: Record<K, T[]>, item) => {
+			const id = fn(item)
+			const groupList = acc[id] ?? []
+			return { ...acc, [id]: [...groupList, item] }
+		},
+		{} as Record<K, T[]>,
+	)
 }
 
 /**
@@ -91,7 +92,7 @@ export async function list_functions(dir: string, ignore: string[] = []) {
 				path: tsPath,
 				module: "index",
 			})
-		})
+		}),
 	)
 
 	const functions = { ...submodules, index: [...index] }
@@ -99,7 +100,7 @@ export async function list_functions(dir: string, ignore: string[] = []) {
 	return functions as Record<string, ListFunctions[]>
 }
 
-export async function update_package_json(exports: Record<string, any>) {
+export async function update_package_json(exports: Record<string, unknown>) {
 	const package_json_path = path.join(DIR_ROOT, "package.json")
 
 	const pkg = await fs.readJSON(package_json_path)
@@ -112,7 +113,7 @@ export async function update_package_json(exports: Record<string, any>) {
 export async function clear() {
 	const files = await fg(["*.js", "*.d.ts"], {
 		cwd: DIR_ROOT,
-		ignore: ["_*", "dist", "node_modules", "events.d.ts"],
+		ignore: ["_*", "dist", "node_modules"],
 	})
 
 	for (const file of files) {

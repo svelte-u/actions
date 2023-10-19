@@ -1,6 +1,7 @@
 import { on, resizeObserver } from "@sveu/browser"
 
-import type { ElementBoundData } from "../utils"
+import type { ElementBoundParameter } from "../utils"
+import type { ActionReturn } from "svelte/action"
 
 /**
  * Reactive bounding box of an HTML element.
@@ -32,9 +33,9 @@ import type { ElementBoundData } from "../utils"
  */
 export function elBound(
 	element: HTMLElement | SVGElement,
-	fn: (data: ElementBoundData) => void
-) {
-	const data: ElementBoundData = {
+	fn: (data: ElementBoundParameter) => void,
+): ActionReturn<ElementBoundParameter> {
+	const data: ElementBoundParameter = {
 		height: 0,
 		width: 0,
 		bottom: 0,

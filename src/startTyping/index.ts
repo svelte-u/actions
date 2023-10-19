@@ -1,5 +1,7 @@
 import { on } from "@sveu/browser"
 
+import type { ActionReturn } from "svelte/action"
+
 /**
  * Checks if the user is currently focused element is editable.
  *
@@ -26,8 +28,7 @@ function is_valid_char({ keyCode, metaKey, ctrlKey, altKey }: KeyboardEvent) {
 	if (metaKey || ctrlKey || altKey) return false
 
 	// 0-9
-	if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105))
-		return true
+	if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105)) return true
 
 	// a-z
 	if (keyCode >= 65 && keyCode <= 90) return true
@@ -56,8 +57,8 @@ function is_valid_char({ keyCode, metaKey, ctrlKey, altKey }: KeyboardEvent) {
  */
 export function startTyping<T extends HTMLElement>(
 	element: T,
-	fn: (element: T, event: KeyboardEvent) => void
-) {
+	fn: (element: T, event: KeyboardEvent) => void,
+): ActionReturn<(element: T, event: KeyboardEvent) => void> {
 	function handle(event: KeyboardEvent) {
 		!is_editable() && is_valid_char(event) && fn(element, event)
 	}

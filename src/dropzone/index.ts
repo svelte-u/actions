@@ -1,6 +1,7 @@
 import { on } from "@sveu/browser"
 
-import type { DropzoneData } from "../utils"
+import type { DropzoneAttributes, DropzoneParameter } from "../utils"
+import type { ActionReturn } from "svelte/action"
 
 /**
  * Create a dropzone area for files.
@@ -10,11 +11,38 @@ import type { DropzoneData } from "../utils"
  * @param fn - A function to be called when the dropzone is hovered or files are dropped.
  * - `overDropzone` - Whether the dropzone is hovered. Type: `boolean`.
  * - `files` - The files dropped. Type: `File[]` or `undefined`.
+ *
+ * @example
+ * ```html
+ * <script>
+ * function fn({ overDropzone, files }) {
+ * // Do something with the data
+ * }
+ * </script>
+ *
+ * <div use:dropzone={fn} />
+ * ```
+ *
+ * @example With custom element:
+ *
+ * ```html
+ * <script>
+ * function hover(data) {
+ * // Do something with the data
+ * }
+ *
+ * function onDrop(data) {
+ * // Do something with the data
+ * }
+ * </script>
+ *
+ * <div on:files={onDrop} on:hover={hover} use:dropzone />
+ * ```
  */
 export function dropzone(
 	element: HTMLElement,
-	fn?: (data: DropzoneData) => void
-) {
+	fn?: (data: DropzoneParameter) => void,
+): ActionReturn<DropzoneParameter, DropzoneAttributes> {
 	let counter = 0
 
 	const dragenter_cleanup = on<DragEvent>(element, "dragenter", (event) => {
@@ -22,7 +50,7 @@ export function dropzone(
 
 		counter += 1
 
-		if (fn) fn({ overDropzone: true })
+		fn?.({ overDropzone: true })
 
 		element.dispatchEvent(new CustomEvent("hover", { detail: true }))
 	})
@@ -37,7 +65,7 @@ export function dropzone(
 		counter -= 1
 
 		if (counter === 0) {
-			if (fn) fn({ overDropzone: false })
+			fn?.({ overDropzone: false })
 
 			element.dispatchEvent(new CustomEvent("hover", { detail: false }))
 		}
@@ -50,7 +78,7 @@ export function dropzone(
 
 		const files = Array.from(event.dataTransfer?.files ?? [])
 
-		if (fn) fn({ overDropzone: false, files })
+		fn?.({ overDropzone: false, files })
 
 		element.dispatchEvent(new CustomEvent("hover", { detail: false }))
 

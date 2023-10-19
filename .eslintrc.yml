@@ -1,0 +1,38 @@
+root: true
+extends:
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    - prettier
+parser: "@typescript-eslint/parser"
+plugins:
+    - "@typescript-eslint"
+    - eslint-plugin-tsdoc
+    - perfectionist
+ignorePatterns:
+    - "*.cjs"
+env:
+    browser: true
+    node: true
+rules:
+    camelcase: off
+    tsdoc/syntax: warn
+    perfectionist/sort-imports:
+        - error
+        - type: natural
+          order: asc
+          newlines-between: always
+          custom-groups:
+              value:
+                  svelte:
+                      - svelte
+                      - "svelte/**"
+                  sveu: "@sveu/**"
+          groups:
+              - builtin
+              - svelte
+              - sveu
+              - external
+              - internal
+              - type
+          internal-pattern:
+              - "./**"

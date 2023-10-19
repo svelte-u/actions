@@ -1,9 +1,10 @@
 import { on } from "@sveu/browser"
 
-import type { FullscreenFnData, FullscreenFunctionMap } from "../utils"
+import type { FullscreenParameter, FullscreenAttributes, FullscreenFunctionMap } from "../utils"
+import type { ActionReturn } from "svelte/action"
 
 // from: https://github.com/sindresorhus/screenfull.js/blob/master/src/screenfull.js
-const functions_map: FullscreenFunctionMap[] = [
+const functions_map = [
 	[
 		"requestFullscreen",
 		"exitFullscreen",
@@ -46,7 +47,7 @@ const functions_map: FullscreenFunctionMap[] = [
 		"MSFullscreenChange",
 		"MSFullscreenError",
 	],
-] as any
+] as FullscreenFunctionMap[]
 
 /**
  * Make an element enter or exit fullscreen mode.
@@ -67,13 +68,13 @@ const functions_map: FullscreenFunctionMap[] = [
  * }
  * </script>
  *
- * <video src="https://vjs.zencdn.net/v/oceans.mp4" use:fullscreen={fn}  on:fullscreen="{(e) => console.log(e.detail)}"/>
+ * <video src="https://vjs.zencdn.net/v/oceans.mp4"  on:fullscreen="{(e) => console.log(e.detail)}" use:fullscreen={fn}/>
  * ```
  */
 export function fullscreen(
 	element: HTMLElement | SVGElement,
-	fn: (data: FullscreenFnData) => void
-) {
+	fn: (data: FullscreenParameter) => void,
+): ActionReturn<FullscreenParameter, FullscreenAttributes> {
 	let fullscreen = false
 
 	let map = functions_map[0]
@@ -100,9 +101,7 @@ export function fullscreen(
 
 		fullscreen = false
 
-		element.dispatchEvent(
-			new CustomEvent("fullscreen", { detail: fullscreen })
-		)
+		element.dispatchEvent(new CustomEvent("fullscreen", { detail: fullscreen }))
 	}
 
 	async function enter() {
@@ -114,9 +113,7 @@ export function fullscreen(
 
 		fullscreen = true
 
-		element.dispatchEvent(
-			new CustomEvent("fullscreen", { detail: fullscreen })
-		)
+		element.dispatchEvent(new CustomEvent("fullscreen", { detail: fullscreen }))
 	}
 
 	async function toggle() {
@@ -131,11 +128,9 @@ export function fullscreen(
 		EVENT,
 		() => {
 			fullscreen = Boolean(document[ELEMENT])
-			element.dispatchEvent(
-				new CustomEvent("fullscreen", { detail: fullscreen })
-			)
+			element.dispatchEvent(new CustomEvent("fullscreen", { detail: fullscreen }))
 		},
-		false
+		false,
 	)
 
 	return {

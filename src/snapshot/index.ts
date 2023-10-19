@@ -2,6 +2,7 @@ import { on, storage } from "@sveu/browser"
 import { noop, unstore } from "@sveu/shared"
 
 import type { SnapshotOptions } from "../utils"
+import type { ActionReturn } from "svelte/action"
 
 /**
  * Takes a snapshot of the state of a node and restores it
@@ -23,8 +24,10 @@ import type { SnapshotOptions } from "../utils"
  *  </script>
  *
  * <form use:snapshot="{{ capture, restore }}">
- *  <input type="text" name="name" />
- * <button type="submit">Submit</button>
+ *
+ *  	<input type="text" name="name" />
+ * 	 <button type="submit">Submit</button>
+ *
  * </form>
  * ```
  *
@@ -38,8 +41,8 @@ import type { SnapshotOptions } from "../utils"
  */
 export function snapshot<T extends HTMLElement | Window>(
 	node: T,
-	options: SnapshotOptions<T> = {}
-) {
+	options: SnapshotOptions<T> = {},
+): ActionReturn<SnapshotOptions<T>> {
 	const {
 		key = "snapshot",
 		capture,
