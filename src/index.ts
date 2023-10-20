@@ -1,5 +1,6 @@
 export * from "./dropzone"
 export * from "./elBound"
+export * from "./focusTrap"
 export * from "./fullscreen"
 export * from "./snapshot"
 export * from "./startTyping"

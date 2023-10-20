@@ -85,6 +85,46 @@ export interface SnapshotOptions<T = unknown> {
 	restore?: (state: unknown) => void
 }
 
+export interface FocusTrapOptions {
+	/**
+	 * The function to call when the element mounted.
+	 *
+	 * @param toggle - The function to toggle focus trap.
+	 *
+	 */
+	fn?: (toggle: () => void) => void
+
+	/**
+	 * Whether the tab key should be disabled.
+	 *
+	 * @defaultValue true
+	 */
+	tab?: boolean
+
+	/**
+	 * The keys which will move the focus to the next element in forward direction.
+	 *
+	 * @defaultValue []
+	 *
+	 */
+	forwards?: string[]
+
+	/**
+	 * The keys which will move the focus to the next element in backward direction.
+	 *
+	 * @defaultValue []
+	 *
+	 */
+	backwards?: string[]
+
+	/**
+	 * Whether the focus trap is active by default.
+	 *
+	 * @defaultValue false
+	 */
+	active?: boolean
+}
+
 export interface DropzoneAttributes {
 	"on:hover"?: (event: CustomEvent<boolean>) => void
 	"on:files"?: (event: CustomEvent<File[]>) => void
@@ -92,4 +132,8 @@ export interface DropzoneAttributes {
 
 export interface FullscreenAttributes {
 	"on:fullscreen"?: (event: CustomEvent<boolean>) => void
+}
+
+export interface FocusTrapAttributes {
+	"on:focused"?: (event: CustomEvent<boolean>) => void
 }
