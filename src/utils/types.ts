@@ -125,6 +125,15 @@ export interface FocusTrapOptions {
 	active?: boolean
 }
 
+export interface RippleOptions {
+	/**
+	 * The duration of the ripple animation in seconds.
+	 *
+	 * @defaultValue 1
+	 */
+	duration?: number
+}
+
 export interface DropzoneAttributes {
 	"on:hover"?: (event: CustomEvent<boolean>) => void
 	"on:files"?: (event: CustomEvent<File[]>) => void
